@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. Navigation & Page Transitions ---
     const navLinks = document.querySelectorAll('.nav-link, .nav-link-btn');
     const sections = document.querySelectorAll('.page-section');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinksContainer = document.querySelector('.nav-links');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinksContainer.classList.toggle('active');
+    });
     
     function navigateTo(targetId) {
         // Hide all sections
@@ -28,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll(`.nav-link[href="#${targetId}"]`).forEach(link => {
             link.classList.add('active');
         });
+        
+        // Close mobile menu if open
+        navLinksContainer.classList.remove('active');
     }
 
     // Handle clicks on navigation links
